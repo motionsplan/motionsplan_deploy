@@ -8,9 +8,9 @@
  *
  * See http://dcycleproject.org/node/43
  */
-function teambuilder_deploy_install() {
+function motionsplan_deploy_install() {
   for ($i = 7000; $i < 8000; $i++) {
-    $candidate = 'teambuilder_deploy_update_' . $i;
+    $candidate = 'motionsplan_deploy_update_' . $i;
     if (function_exists($candidate)) {
       $candidate();
     }
@@ -20,7 +20,7 @@ function teambuilder_deploy_install() {
 /**
  * Setting up timezones.
  */
-function teambuilder_deploy_update_7000() {
+function motionsplan_deploy_update_7000() {
   variable_set('configurable_timezones', 0);
   variable_set('date_first_day', 1);
   variable_set('date_default_timezone', 'Europe/Copenhagen');
@@ -29,7 +29,7 @@ function teambuilder_deploy_update_7000() {
 /**
  * Setting upload to 5MB and skip scheme on upload.
  */
-function teambuilder_deploy_update_7001() {
+function motionsplan_deploy_update_7001() {
   variable_set('file_entity_max_filesize', '5 MB');
   variable_set('file_entity_file_upload_wizard_skip_scheme', 1);
 }
@@ -37,7 +37,7 @@ function teambuilder_deploy_update_7001() {
 /**
  * Settings for transliteration.
  */
-function teambuilder_deploy_update_7002() {
+function motionsplan_deploy_update_7002() {
   module_enable(array('transliteration'));
   if (module_exists('pathauto')) {
     if (module_exists('transliteration')) {

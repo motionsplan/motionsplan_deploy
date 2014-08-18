@@ -1,8 +1,0 @@
-core = "7.x"
-description = "Deploy module for Teambuilder"
-name = "Teambuilder Deploy"
-package = "Teambuilder"
-version = "7.x-0.1"
-
-dependencies[] = teambuilder_activities
-dependencies[] = teambuilder_activities_pdf
