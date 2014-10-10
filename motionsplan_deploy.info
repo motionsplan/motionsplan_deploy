@@ -7,3 +7,4 @@ version = "7.x-0.1"
 dependencies[] = motionsplan_exercise
 dependencies[] = motionsplan_exercise_pdf
 dependencies[] = motionsplan_exercise_program
+dependencies[] = motionsplan_search
