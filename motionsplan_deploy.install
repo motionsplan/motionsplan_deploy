@@ -46,3 +46,46 @@ function motionsplan_deploy_update_7002() {
     variable_set('pathauto_reduce_ascii', 1);
   }
 }
+
+/**
+ * Theme settings.
+ */
+function motionsplan_deploy_update_7003() {
+  $theme = 'sparta';
+  $admin_theme = 'seven';
+
+  // Enable standard theme.
+  db_update('system')
+    ->fields(array('status' => 1))
+    ->condition('type', 'theme')
+    ->condition('name', $theme)
+    ->execute();
+  // Enable the admin theme.
+  db_update('system')
+    ->fields(array('status' => 1))
+    ->condition('type', 'theme')
+    ->condition('name', $admin_theme)
+    ->execute();
+  // Disable bartik.
+  db_update('system')
+    ->fields(array('status' => 0))
+    ->condition('type', 'theme')
+    ->condition('name', 'bartik')
+    ->execute();
+  variable_set('theme_default', $theme);
+  variable_set('admin_theme', $admin_theme);
+  variable_set('node_admin_theme', '1');
+  variable_set('media_dialog_theme', $admin_theme);
+}
+
+/**
+ * Permissions.
+ */
+function motionsplan_deploy_update_7004() {
+  // Allow visitor account creation, but with administrative approval.
+  variable_set('user_register', USER_REGISTER_VISITORS_ADMINISTRATIVE_APPROVAL);
+
+  // Enable default permissions for system roles.
+  user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access content'));
+  user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('access content'));
+}
